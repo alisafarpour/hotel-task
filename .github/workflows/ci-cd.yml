@@ -1,0 +1,46 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run Tests (Optional)
+        run: npm test
+
+      - name: Docker Build & Push to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u alisafarpour --password-stdin
+          docker build -t ghcr.io/alisafarpour/hotel-task:latest .
+          docker push ghcr.io/alisafarpour/hotel-task:latest
+
+      - name: Deploy to Kubernetes
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig.yaml
+          kubectl --kubeconfig=kubeconfig.yaml apply -f k8s/deployment.yaml
