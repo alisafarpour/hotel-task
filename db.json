@@ -1,0 +1,54 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Homa",
+      "description": "Tehran Homa Hotel, one of the most prestigious five-star hotels in the capital...",
+      "location": {
+        "long": 51.39,
+        "lat": 35.70
+      },
+      "stars": 5
+    },
+    {
+      "id": 2,
+      "name": "Espinas Palace",
+      "description": "A luxurious five-star hotel in Tehran offering modern amenities and comfort...",
+      "location": {
+        "long": 51.39,
+        "lat": 35.75
+      },
+      "stars": 5
+    },
+    {
+      "id": 3,
+      "name": "Parsian Azadi",
+      "description": "A well-known five-star hotel in Tehran with breathtaking mountain views...",
+      "location": {
+        "long": 51.41,
+        "lat": 35.78
+      },
+      "stars": 5
+    },
+    {
+      "id": 4,
+      "name": "Ferdowsi Grand",
+      "description": "A four-star hotel in the heart of Tehran, known for its Persian architecture...",
+      "location": {
+        "long": 51.42,
+        "lat": 35.70
+      },
+      "stars": 4
+    },
+    {
+      "id": 5,
+      "name": "Laleh Hotel",
+      "description": "A classic five-star hotel in Tehran, offering a mix of modern and traditional designs...",
+      "location": {
+        "long": 51.39,
+        "lat": 35.71
+      },
+      "stars": 5
+    }
+  ]
+}
